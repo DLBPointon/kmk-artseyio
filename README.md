@@ -19,6 +19,13 @@ The ARTSEYIO system looks like this, it is surprisingly easy to get to grips  wi
 
 ![the layout and combos](images/beta090.jpg)
 
+## The Repo
+backup.py -- contains troublesome code I cant get working, might just be borked.
+
+main.py -- is main...
+
+Other files are the other files you normally expect but are empty.
+
 ## Issues
 So far the alphabet works, the combos that ARTSEYIO have used are pretty cool and feels reminiscent of old mobile phone keyboards. However, although it would work for me and what I need it to do. I think KMK is a very good and easy firmware with an easy installation for those that need it. So I thought in order to make life easier for those that actually _need_ the board, I may as well do the whole system. However, as with any project, there are issues:
 
