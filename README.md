@@ -27,7 +27,11 @@ main.py -- is main...
 Other files are the other files you normally expect but are empty.
 
 ## Issues
-So far the alphabet works, the combos that ARTSEYIO have used are pretty cool and feels reminiscent of old mobile phone keyboards. However, although it would work for me and what I need it to do. I think KMK is a very good and easy firmware with an easy installation for those that need it. So I thought in order to make life easier for those that actually _need_ the board, I may as well do the whole system. However, as with any project, there are issues:
+So far the alphabet works, the combos that ARTSEYIO have used are pretty cool and feels reminiscent of old mobile phone keyboards. However, although it would work for me and what I need it to do, I thought I may as well go the mile and make life easier for those that actually _need_ the board.
+
+I think KMK is very good in this respect, being python-based it is very human-readable and easy to install as long as you have a RP2040 chip.
+
+However, as with any project, there are issues:
 
 - One Shot doesn't work, for me just importing the module stops the board from working which ( due to the style of the keyboard) means shift isn't really useful at all.
 
