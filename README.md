@@ -2,7 +2,7 @@
 
 This is a repo containing the KMK files for the ARTSEYIO paintbrush keyboard.
 
-I was originally just looking for a nice macro-pad to keep attached to my PC, once I built it and then looked around for the firmware I found that neither the ZMK or QMK (that one scares me) repo's work for me. So I decided to make it work with KMK which was much more successful. 
+I was originally just looking for a nice macro-pad to keep attached to my PC, once I built it and then looked around for the firmware I found that neither the ZMK or QMK (that one scares me) repo's work for me. So I decided to make it work with KMK which was ~much~ somewhat more successful. 
 
 ## Hardware
 [Elite-Pi](https://docs.keeb.io/elite-pi-guide) -- I have 2 laying around since I ruined a lily58 pcb, looks pretty nice with the literal pi on the top of the tiny board. However, there is some custom wiring in my case... I think I'm developing an issue with burning out pins... (a ground pin was causing the board to reset and pin 20 needed wiring manually as it wasn't working via the PCB).
