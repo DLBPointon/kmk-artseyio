@@ -1,80 +1,92 @@
+import board
 from kb import KMKKeyboard
 
 from kmk.keys import KC
-from kmk.modules.combos import Combos, Chord
 from kmk.modules.layers import Layers
+from kmk.modules.combos import Combos, Chord
 from kmk.extensions.media_keys import MediaKeys
-
-# Layer Tap
-SYMBOLS = KC.LT(1, KC.A)
-NUMBER  = KC.LT(2, KC.S)
-MORESYM = KC.LT(3, KC.E)
-MEDIA   = KC.LT(4, KC.O)
 
 combos = Combos()
 
 keyboard = KMKKeyboard()
-keyboard.modules.append(combos)
 keyboard.modules.append(Layers())
+keyboard.modules.append(combos)
 keyboard.extensions.append(MediaKeys())
+
+SYMBOLS = KC.LT(1, KC.A, prefer_hold=True, tap_interrupted=False, tap_time=500)
+NUMBER  = KC.LT(2, KC.S, prefer_hold=True, tap_interrupted=False, tap_time=500)
+MORESYM = KC.LT(3, KC.E, prefer_hold=True, tap_interrupted=False, tap_time=500)
+MEDIA   = KC.LT(4, KC.O, prefer_hold=True, tap_interrupted=False, tap_time=500)
+
+NAV     = KC.TO(5)
 
 combos.combos = [
     # Combos are from the documentation
     # https://raw.githubusercontent.com/artseyio/artsey/main/layout%20diagrams/beta.jpg
 
+    # Nav Layer Select
+    Chord((KC.R, KC.E, KC.I),               NAV),
+
+
     # Base Layer Section 0
-    Chord((KC.E, KC.O),             KC.B),
-    Chord((KC.Y, KC.I, KC.O),       KC.M),
-    Chord((KC.E, KC.Y),             KC.C),
-    Chord((KC.H, KC.I),             KC.N),
-    Chord((KC.A, KC.R, KC.T),       KC.D),
-    Chord((KC.E, KC.I, KC.O),       KC.P),
-    Chord((KC.A, KC.R),             KC.F),
-    Chord((KC.A, KC.R, KC.S),       KC.Q),
-    Chord((KC.R, KC.T),             KC.G),
-    Chord((KC.Y, KC.I),             KC.U),
-    Chord((KC.E, KC.I),             KC.H),
-    Chord((KC.R, KC.S),             KC.V),
-    Chord((KC.T, KC.S),             KC.J),
-    Chord((KC.A, KC.S),             KC.W),
-    Chord((KC.Y, KC.O),             KC.K),
-    Chord((KC.R, KC.T, KC.S),       KC.X),
-    Chord((KC.E, KC.Y, KC.I),       KC.L),
-    Chord((KC.A, KC.R, KC.T, KC.S), KC.Z),
+    Chord((MORESYM, MEDIA),                 KC.B),
+    Chord((KC.Y, KC.I, MEDIA),              KC.M),
+    Chord((MORESYM, KC.Y),                  KC.C),
+    Chord((KC.H, KC.I),                     KC.N),
+    Chord((SYMBOLS, KC.R, KC.T),            KC.D),
+    Chord((MORESYM, KC.I, MEDIA),           KC.P),
+    Chord((SYMBOLS, KC.R),                  KC.F),
+    Chord((SYMBOLS, KC.R, NUMBER),          KC.Q),
+    Chord((KC.R, KC.T),                     KC.G),
+    Chord((KC.Y, KC.I),                     KC.U),
+    Chord((MORESYM, KC.I),                  KC.H),
+    Chord((KC.R, NUMBER),                   KC.V),
+    Chord((KC.T, NUMBER),                   KC.J),
+    Chord((SYMBOLS, NUMBER),                KC.W),
+    Chord((KC.Y, MEDIA),                    KC.K),
+    Chord((KC.R, KC.T, NUMBER),             KC.X),
+    Chord((MORESYM, KC.Y, KC.I),            KC.L),
+    Chord((SYMBOLS, KC.R, KC.T, NUMBER),    KC.Z),
     
     # Base Layer Section 1
-    Chord((KC.A, KC.Y),             KC.COMMA),
-    Chord((KC.R, KC.Y),             KC.QUOTE),
-    Chord((KC.A, KC.I),             KC.DOT),
-    Chord((KC.T, KC.I),             KC.EXCLAIM),
-    Chord((KC.A, KC.O),             KC.SLASH),
-    Chord((KC.S, KC.O),             KC.QUESTION),
+    Chord((SYMBOLS, KC.Y),                  KC.COMMA),
+    Chord((KC.R, KC.Y),                     KC.QUOTE),
+    Chord((SYMBOLS, KC.I),                  KC.DOT),
+    Chord((KC.T, KC.I),                     KC.EXCLAIM),
+    Chord((SYMBOLS, MEDIA),                 KC.SLASH),
+    Chord((NUMBER, MEDIA),                  KC.QUESTION),
     
     # Base Layer Section 2
-    Chord((KC.E, KC.Y, KC.I, KC.O), KC.SPACE),
-    Chord((KC.A, KC.E),             KC.ENTER),
-    Chord((KC.R, KC.E),             KC.BACKSPACE),
-    Chord((KC.A, KC.R, KC.O),       KC.ESC),
-    Chord((KC.R, KC.I),             KC.DEL),
-    Chord((KC.A, KC.R, KC.T, KC.O), KC.TAB),
+    Chord((MORESYM, KC.Y, KC.I, MEDIA),     KC.SPACE),
+    Chord((SYMBOLS, MORESYM),               KC.ENTER),
+    Chord((KC.R, MORESYM),                  KC.BACKSPACE),
+    Chord((SYMBOLS, KC.R, MEDIA),           KC.ESC),
+    Chord((KC.R, KC.I),                     KC.DEL),
+    Chord((SYMBOLS, KC.R, KC.T, MEDIA),     KC.TAB),
 
     # Base Layer Section 3
-    Chord((KC.S, KC.O),             KC.RCTRL),
-    Chord((KC.A, KC.Y, KC.I, KC.O), KC.CAPS),
-    Chord((KC.S, KC.Y),             KC.RGUI),
-    Chord((KC.R, KC.T, KC.S, KC.E), KC.SHIFT),
-    Chord((KC.S, KC.I),             KC.RALT),
-    Chord((KC.A, KC.R, KC.T, KC.S, KC.E, KC.Y, KC.I, KC.O), 
-                                    KC.F12),
+    Chord((NUMBER, MEDIA),                  KC.RCTRL),
+    Chord((SYMBOLS, KC.Y, KC.I, MEDIA),     KC.CAPS),
+    Chord((NUMBER, KC.Y),                   KC.RGUI),
+    Chord((KC.R, KC.T, NUMBER, MORESYM),    KC.LSHIFT),
+    Chord((NUMBER, KC.I),                   KC.RALT),
+    Chord((SYMBOLS, KC.R, KC.T, NUMBER, MORESYM, KC.Y, KC.I, MEDIA), 
+                                            KC.F12),
+    
+    # Number Layer Combos
+    Chord((KC.N1, KC.N2),                   KC.N7),
+    Chord((KC.N2, KC.N3),                   KC.N8),
+    Chord((KC.N4, KC.N5),                   KC.N9),
+    Chord((KC.N5, KC.N6),                   KC.N0),
 ]
 
 keyboard.keymap = [
     
     # BASE LAYER
     # Took me too long to realise tne board is an ARTSEYIO because the main keys are...
-    [KC.A, KC.R, KC.T, KC.S, KC.E, KC.Y, KC.I, KC.O],
+    [SYMBOLS, KC.R, KC.T, NUMBER, MORESYM, KC.Y, KC.I, MEDIA],
     
-    # SYMBOL LAYER 1
+    # SYMBOLS LAYER 1
     [KC.TRNS, KC.RSHIFT(KC.N9), KC.LBRACKET, KC.RSHIFT(KC.LBRACKET), KC.TRNS, KC.RSHIFT(KC.N0), KC.RBRACKET, KC.RSHIFT(KC.RBRACKET)],
 
     # NUMBER LAYER
